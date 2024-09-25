@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom left, rgb(7, 132, 241), rgb(105, 233, 80), rgb(236, 3, 3));
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            perspective: 1000px; /* Perspective for 3D effect */
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
+        .form-wrapper {
+            width: 350px;
+            height: 450px;
+            position: relative;
+            perspective: 1000px; /* Perspective to create the 3D space */
+        }
+
+        .form-box {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            box-shadow: 0 4px 8px rgba(1, 1, 1, 0.5);
+            border-radius: 10px;
+        }
+
+        .form-wrapper:hover .form-box {
+            transform: rotateY(180deg); /* Rotate horizontally on hover */
+        }
+
+        .front, .back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+        }
+
+        /* Front side with just the "Login" text */
+        .front {
+            background: linear-gradient(to bottom left, rgb(7, 132, 241), rgb(105, 233, 80), rgb(236, 3, 3));
+            color: white;
+            font-size: 2.5em;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.9),
+                         6px 6px 0 rgba(0, 0, 0, 0.4),
+                         9px 9px 0 rgba(0, 0, 0, 0.3);
+            letter-spacing: 2px;
+        }
+
+        /* Back side with the form */
+        .back {
+            background: linear-gradient(to bottom left, rgb(236, 3, 3), rgb(105, 233, 80), rgb(7, 132, 241));
+            transform: rotateY(180deg); /* Make the back side flipped initially */
+            padding: 20px;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 14px 18px rgba(1, 1, 1, 0.5);
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: linear-gradient(to right, rgb(236, 3, 3), rgb(105, 233, 80), rgb(7, 132, 241));
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: linear-gradient(to left, rgb(236, 3, 3), rgb(105, 233, 80), rgb(7, 132, 241));
+        }
+
+        p {
+            margin-top: 15px;
+        }
+
+        a {
+            color: #1606ee;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-wrapper">
+            <div class="form-box">
+                <!-- Front side -->
+                <div class="front">
+                    Register
+                </div>
+                
+                <!-- Back side (Login form) -->
+                <div class="back">
+                    <div>
+                        <h2>Login</h2>
+                        <form action="register.php" method="post">
+                            <input type="text" name="username" placeholder="Username" required>
+                            <input type="email" name="email" placeholder="Email" required>
+                            <input type="password" name="password" placeholder="Password" required>
+                            <button type="submit">Register</button>
+                            <p>Already have an account? <a href="login.html">Login here</a></p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
